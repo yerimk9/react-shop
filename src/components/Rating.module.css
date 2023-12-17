@@ -1,0 +1,9 @@
+.RatingStar {
+  font-size: 2rem;
+  display: flex;
+  padding-bottom: 2px;
+}
+
+.RatingStar.selected {
+  color: rgb(250, 204, 21);
+}

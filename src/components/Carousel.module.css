@@ -1,0 +1,115 @@
+.carouselContainer {
+  max-width: 100%;
+  margin: auto;
+}
+
+.carouselWrapper {
+  position: relative;
+}
+
+.carouselItem {
+  display: none;
+}
+
+.carouselItem.active {
+  display: block;
+}
+
+.carouselImg {
+  width: 100%;
+  height: 700px;
+  object-fit: cover;
+}
+
+.carouselCaption {
+  position: absolute;
+  width: 100%;
+
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  margin-bottom: 2.5rem;
+  bottom: 33.333333%;
+  text-align: left;
+}
+
+.carouselCaption h1 {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  color: rgb(255 255 255 / 1);
+  font-weight: 700;
+}
+
+.carouselCaption p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: rgb(255 255 255 / 1);
+}
+
+.carouselBtn {
+  position: absolute;
+  top: 0;
+  color: #fff;
+  font-size: 26px;
+  bottom: 0;
+  margin-top: 0;
+  padding: 5px;
+  cursor: pointer;
+  border: 0;
+  opacity: 0.4;
+  background-color: transparent;
+}
+
+.carouselBtn:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.carouselPrev {
+  left: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.carouselNext {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.link {
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-height: 3rem;
+  font-size: 0.875rem;
+  margin-top: 0.75rem;
+  display: inline-flex;
+  cursor: pointer;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(25, 29, 36);
+  border-color: rgb(25, 29, 36);
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
+
+.carouselDots {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+
+  position: relative;
+  top: -50px;
+}
+
+.carouselDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #717171;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.carouselDot.active {
+  background-color: #bbb;
+}

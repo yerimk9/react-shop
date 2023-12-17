@@ -1,0 +1,76 @@
+.detailContainer {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.detailContainer figure {
+  padding: 1rem;
+  min-width: 20em;
+  background-color: rgb(255 255 255 / 1);
+  border-radius: 1rem;
+}
+
+.detailContainer img {
+  object-fit: contain;
+  width: 100%;
+  height: 18rem;
+}
+
+.description {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 0.5rem;
+
+  p {
+    color: rgb(166, 173, 187);
+  }
+}
+
+.description h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 900;
+
+  span {
+    margin-left: 0.5rem;
+    background: rgb(31, 178, 165);
+    color: #fff;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding-left: 0.563rem;
+    padding-right: 0.563rem;
+    border-radius: 1.9rem;
+    font-weight: 800;
+  }
+}
+
+.price {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.cardActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.review {
+  display: flex;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.participants {
+  margin-left: 0.5rem;
+}

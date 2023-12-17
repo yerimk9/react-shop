@@ -1,0 +1,23 @@
+.footer {
+  background-color: #191d24;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.5rem;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.cardList {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.socialMediaLinks {
+  display: flex;
+  gap: 1rem;
+}
