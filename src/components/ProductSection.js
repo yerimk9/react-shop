@@ -3,7 +3,7 @@ import styles from "./ProductSection.module.css";
 import getProducts from "../api";
 import { Link } from "react-router-dom";
 
-function ProductSection({ size, category, children }) {
+function ProductSection({ size, category, children, isDarkMode }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -40,7 +40,11 @@ function ProductSection({ size, category, children }) {
   }, [size, category]);
 
   return (
-    <section className={styles.productSection}>
+    <section
+      className={`${styles.productSection} ${
+        isDarkMode ? "" : styles.lightMode
+      }`}
+    >
       <h2>{children}</h2>
       <ProductItems items={products} />
     </section>

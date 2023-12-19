@@ -9,6 +9,7 @@ import Discover from "../assets/cards/discover.svg";
 import FaceBook from "../assets/socialMedia/facebook.svg";
 import Instagram from "../assets/socialMedia/instagram.svg";
 import GitHub from "../assets/socialMedia/github.svg";
+import { useTheme } from "styled-components";
 
 const cardList = [
   Visa,
@@ -35,8 +36,9 @@ const linkList = [
 ];
 
 export default function Footer() {
+  const { isDarkMode, toggleDarkMode } = useTheme();
   return (
-    <div className={styles.footer}>
+    <div className={`${styles.footer} ${isDarkMode ? "" : styles.lightMode}`}>
       <div className={styles.title}>
         <a
           href="https://zero-base.co.kr"

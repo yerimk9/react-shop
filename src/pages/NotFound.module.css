@@ -17,3 +17,10 @@
   margin-bottom: 2.5rem;
   margin-top: 1rem;
 }
+
+.lightMode {
+  h1,
+  p {
+    color: #1f2937;
+  }
+}

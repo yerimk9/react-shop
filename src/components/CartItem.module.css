@@ -90,3 +90,11 @@
     margin-left: 0;
   }
 }
+
+.lightMode {
+  a,
+  p,
+  button:nth-of-type(2) {
+    color: #1f2937;
+  }
+}

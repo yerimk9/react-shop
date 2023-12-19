@@ -38,3 +38,10 @@
   display: flex;
   justify-content: space-between;
 }
+
+.lightMode {
+  h1,
+  span {
+    color: #1f2937;
+  }
+}

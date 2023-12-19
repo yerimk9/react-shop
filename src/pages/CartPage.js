@@ -6,11 +6,13 @@ import styles from "./CartPage.module.css";
 import { getCartItems, removeCartItems } from "../cart"; // Import removeCartItems
 import CartItem from "../components/CartItem";
 import CartDeleteModal from "../components/CartDeleteModal";
+import { useTheme } from "styled-components";
 
 function CartPage(props) {
   const [cartInfo, setCartInfo] = useState(getCartItems());
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [totalItems, setTotalItems] = useState(0);
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
   useEffect(() => {
     const updatedCartInfo = getCartItems();
@@ -55,7 +57,7 @@ function CartPage(props) {
   };
 
   return (
-    <div>
+    <div className={`${isDarkMode ? "" : styles.lightMode}`}>
       <Nav totalItemsProp={totalItems} />
       <section>
         <section className="sectionInner">
@@ -87,6 +89,7 @@ function CartPage(props) {
                         price={item.price}
                         cartInfo={cartInfo}
                         setTotalItems={updateTotalItems}
+                        isDarkMode={isDarkMode}
                       />
                     ))}
                 </div>

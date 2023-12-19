@@ -93,3 +93,20 @@
   margin-bottom: 0.75rem;
   font-weight: 800;
 }
+
+.lightMode {
+  h2 {
+    color: #1f2937;
+  }
+  .itemContainer {
+    border: 1px solid rgb(229, 231, 235);
+    border-radius: 1rem;
+  }
+
+  .description {
+    background-color: #f3f4f6;
+    p {
+      color: #1f2937;
+    }
+  }
+}

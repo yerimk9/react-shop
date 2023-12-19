@@ -1,15 +1,20 @@
-import { Link } from "react-router-dom";
-import styles from "./Nav.module.css";
-import cart from "../assets/cart.svg";
-import { getCartItems } from "../cart.js";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useTheme } from "styled-components";
+import { getCartItems } from "../cart.js";
 import getProducts from "../api.js";
+import styles from "./Nav.module.css";
+
+import cartDark from "../assets/cartDark.svg";
+import cartLight from "../assets/cartLight.svg";
 import sun from "../assets/sun.svg";
+import moon from "../assets/moon.svg";
 
 export default function Nav({ totalItemsProp }) {
   const [totalItems, setTotalItems] = useState(0);
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
   useEffect(() => {
     const cartInfo = getCartItems();
@@ -33,7 +38,7 @@ export default function Nav({ totalItemsProp }) {
   };
 
   return (
-    <div className={`${styles.nav} ${styles.lightMode}`}>
+    <div className={`${styles.nav} ${isDarkMode ? "" : styles.lightMode}`}>
       <div className={styles.left}>
         <h2>
           <Link to="/">React Shop</Link>
@@ -49,8 +54,8 @@ export default function Nav({ totalItemsProp }) {
         </div>
       </div>
       <div className={styles.right}>
-        <button className={styles.toggleBtn}>
-          <img src={sun} alt="colorChange" width="30px" />
+        <button className={styles.toggleBtn} onClick={toggleDarkMode}>
+          <img src={isDarkMode ? sun : moon} alt="colorChange" width="30px" />
         </button>
         <input
           placeholder="검색"
@@ -62,14 +67,18 @@ export default function Nav({ totalItemsProp }) {
             {searchResults.map((result) => (
               <li key={result.id}>
                 <Link to={`/product/${result.id}`}>
-                  <span style={{ color: "#fff" }}>{result.title}</span>
+                  <span>{result.title}</span>
                 </Link>
               </li>
             ))}
           </ul>
         )}
         <Link to={"/cart"}>
-          <img src={cart} alt="cart" width="30px" />
+          {isDarkMode ? (
+            <img src={cartDark} alt="cart" width="30px" />
+          ) : (
+            <img src={cartLight} alt="cart" width="30px" />
+          )}
           {totalItems > 0 && (
             <span className={styles.cartNum}>{totalItems}</span>
           )}

@@ -1,5 +1,4 @@
 * {
-  /* font-size: 14px; */
   color: rgb(166, 173, 187);
   box-sizing: border-box;
   padding: 0;
@@ -14,7 +13,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #2a303c;
 }
 
 code {

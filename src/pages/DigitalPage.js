@@ -2,8 +2,10 @@ import React from "react";
 import ProductSection from "../components/ProductSection";
 import Nav from "../layout/Nav";
 import Footer from "../layout/Footer";
+import { useTheme } from "styled-components";
 
 export default function DigitalPage() {
+  const { isDarkMode, toggleDarkMode } = useTheme();
   return (
     <div>
       <Nav />
@@ -15,7 +17,9 @@ export default function DigitalPage() {
               <li>&nbsp; &gt; 디지털</li>
             </ul>
           </div>
-          <ProductSection category="electronics">디지털</ProductSection>
+          <ProductSection isDarkMode={isDarkMode} category="electronics">
+            디지털
+          </ProductSection>
         </section>
       </section>
       <Footer />

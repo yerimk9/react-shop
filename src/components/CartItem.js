@@ -3,7 +3,14 @@ import styles from "./CartItem.module.css";
 import { CART_COOKIE_KEY } from "../cart";
 import { useCart } from "../CartContext";
 
-function CartItem({ title, imageUrl, price, cartInfo, setTotalItems }) {
+function CartItem({
+  title,
+  imageUrl,
+  price,
+  cartInfo,
+  setTotalItems,
+  isDarkMode,
+}) {
   const { dispatch } = useCart();
   const currentItem = cartInfo.find((item) => item.title === title);
 
@@ -58,7 +65,9 @@ function CartItem({ title, imageUrl, price, cartInfo, setTotalItems }) {
   };
 
   return (
-    <div className={styles.imgContainer}>
+    <div
+      className={`${styles.imgContainer} ${isDarkMode ? "" : styles.lightMode}`}
+    >
       <a href="/">
         <figure className={styles.imgContainerInner}>
           <img src={imageUrl} alt={title} className={styles.productImage} />

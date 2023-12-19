@@ -77,7 +77,7 @@ input::placeholder {
 }
 
 .searchList {
-  top: 3.3rem;
+  top: 3.2rem;
   left: 3.5rem;
   width: auto;
   position: absolute;
@@ -97,10 +97,34 @@ input::placeholder {
   text-align: left;
   align-items: center;
   font-weight: 700;
+  span {
+    color: #fff;
+  }
 }
 
 .toggleBtn {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.lightMode {
+  border: 1px solid #e5e7eb;
+  background-color: #fff;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  a {
+    color: #1f2937;
+  }
+  .right input {
+    background-color: #d1d5db;
+    color: #1f2937;
+  }
+  .searchList {
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-top: none;
+    li > a span {
+      color: #1f2937;
+    }
+  }
 }

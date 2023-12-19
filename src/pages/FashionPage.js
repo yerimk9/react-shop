@@ -2,8 +2,10 @@ import React from "react";
 import ProductSection from "../components/ProductSection";
 import Nav from "../layout/Nav";
 import Footer from "../layout/Footer";
+import { useTheme } from "styled-components";
 
 export default function FashionPage() {
+  const { isDarkMode, toggleDarkMode } = useTheme();
   return (
     <div>
       <Nav />
@@ -15,7 +17,9 @@ export default function FashionPage() {
               <li>&nbsp; &gt; 패션</li>
             </ul>
           </div>
-          <ProductSection category="clothing">패션</ProductSection>
+          <ProductSection isDarkMode={isDarkMode} category="clothing">
+            패션
+          </ProductSection>
         </section>
       </section>
       <Footer />

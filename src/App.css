@@ -54,3 +54,9 @@ section {
   border: 1px solid rgb(166, 173, 187);
   background-color: transparent;
 }
+
+.btnOutlineWithLight {
+  border: 1px solid #000;
+  color: #000;
+  background-color: #ffffff;
+}

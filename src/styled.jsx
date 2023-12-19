@@ -1,9 +1,12 @@
-import { css, styled } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-export const ThemeModeWrapper = styled.button`
-  
-  ${({ theme }) => {
-    return css`
-    `;
-  }}
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${(props) => (props.theme.isDarkMode ? "#2a303c" : "")};
+  }
+  li {
+    color: ${(props) => (props.theme.isDarkMode ? "" : "#1f2937")};
+  }
 `;
+
+export default GlobalStyle;

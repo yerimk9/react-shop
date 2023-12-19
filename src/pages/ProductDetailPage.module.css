@@ -74,3 +74,20 @@
 .participants {
   margin-left: 0.5rem;
 }
+
+.lightMode {
+  p,
+  h2,
+  li {
+    color: #1f2937;
+  }
+
+  section {
+    background-color: #fff;
+  }
+
+  .description h2 span {
+    background-color: #37cdbe;
+    color: #1f2937;
+  }
+}

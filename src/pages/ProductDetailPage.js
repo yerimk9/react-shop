@@ -6,11 +6,13 @@ import Nav from "../layout/Nav";
 import Footer from "../layout/Footer";
 import Rating from "../components/Rating";
 import { addToCart } from "../cart.js";
+import { useTheme } from "styled-components";
 
 function ProductDetailPage() {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [totalItems, setTotalItems] = useState(0);
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
   useEffect(() => {
     const fetchProductDetail = async () => {
@@ -42,7 +44,7 @@ function ProductDetailPage() {
   }
 
   return (
-    <div>
+    <div className={`${isDarkMode ? "" : styles.lightMode}`}>
       <Nav totalItemsProp={totalItems} />
       <section>
         <section className="sectionInner">
@@ -79,7 +81,12 @@ function ProductDetailPage() {
                 <button className="btn btnPrimary" onClick={handleAddToCart}>
                   장바구니에 담기
                 </button>
-                <Link className="btn btnOutline" to="/cart">
+                <Link
+                  className={`btn ${
+                    isDarkMode ? "btnOutline" : "btnOutlineWithLight"
+                  }`}
+                  to="/cart"
+                >
                   장바구니로 이동
                 </Link>
               </div>
