@@ -25,3 +25,14 @@ code {
 a {
   text-decoration: none;
 }
+
+ul,
+li {
+  list-style: none;
+}
+
+/* input 기본 스타일 초기화 */
+input {
+  border: none;
+  outline: none;
+}

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import getProducts from "../api";
 import styles from "./ProductDetailPage.module.css";
-import Nav from "../Nav";
-import Footer from "../Footer";
+import Nav from "../layout/Nav";
+import Footer from "../layout/Footer";
 import Rating from "../components/Rating";
-import { addToCart } from "../constants/cart.js";
+import { addToCart } from "../cart.js";
 
 function ProductDetailPage() {
   const { productId } = useParams();

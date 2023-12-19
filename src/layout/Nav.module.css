@@ -42,10 +42,18 @@
 .right input {
   height: 100%;
   border-radius: 5px;
-  background-color: rgb(75 85 99 / 1);
+  opacity: 1;
+  background-color: rgb(75 85 99);
+  color: rgb(255, 255, 255);
   opacity: 0.8;
   padding-left: 16px;
   padding-right: 16px;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: rgb(162, 169, 183);
 }
 
 .cartNum {
@@ -66,4 +74,33 @@
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.searchList {
+  top: 3.3rem;
+  left: 3.5rem;
+  width: auto;
+  position: absolute;
+  display: flex;
+  z-index: 50;
+  transform-origin: top;
+  flex-direction: column;
+  background-color: rgb(75 85 99 / 1);
+  max-height: 20rem;
+  overflow: scroll;
+}
+
+.searchList > li > a {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  align-items: center;
+  font-weight: 700;
+}
+
+.toggleBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }

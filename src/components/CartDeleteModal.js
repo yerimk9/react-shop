@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./CartDeleteModal.module.css";
-import { removeCartItems } from "../constants/cart";
+import { removeCartItems } from "../cart";
 
-function CartDeleteModal({ closeModal }) {
+function CartDeleteModal({ closeModal, onConfirm }) {
   const removeAndClose = () => {
     removeCartItems();
     closeModal();
+    onConfirm();
   };
 
   return (

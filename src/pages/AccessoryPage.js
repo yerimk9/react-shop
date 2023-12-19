@@ -1,7 +1,7 @@
 import React from "react";
-import Nav from "../Nav";
-import Footer from "../Footer";
 import ProductSection from "../components/ProductSection";
+import Nav from "../layout/Nav";
+import Footer from "../layout/Footer";
 
 export default function AccessoryPage() {
   return (

@@ -1,8 +1,8 @@
 import React from "react";
-import Nav from "../Nav";
-import Footer from "../Footer";
 import styles from "./NotFound.module.css";
 import { Link } from "react-router-dom";
+import Nav from "../layout/Nav";
+import Footer from "../layout/Footer";
 
 function NotFoundPage(props) {
   return (

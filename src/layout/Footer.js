@@ -1,14 +1,14 @@
 import styles from "./Footer.module.css";
 
-import Visa from "./assets/cards/visa.svg";
-import Mastercard from "./assets/cards/mastercard.svg";
-import AmericanExpress from "./assets/cards/americanExpress.svg";
-import PayPal from "./assets/cards/paypal.svg";
-import DinersClub from "./assets/cards/dinersClub.svg";
-import Discover from "./assets/cards/discover.svg";
-import FaceBook from "./assets/socialMedia/facebook.svg";
-import Instagram from "./assets/socialMedia/instagram.svg";
-import GitHub from "./assets/socialMedia/github.svg";
+import Visa from "../assets/cards/visa.svg";
+import Mastercard from "../assets/cards/mastercard.svg";
+import AmericanExpress from "../assets/cards/americanExpress.svg";
+import PayPal from "../assets/cards/paypal.svg";
+import DinersClub from "../assets/cards/dinersClub.svg";
+import Discover from "../assets/cards/discover.svg";
+import FaceBook from "../assets/socialMedia/facebook.svg";
+import Instagram from "../assets/socialMedia/instagram.svg";
+import GitHub from "../assets/socialMedia/github.svg";
 
 const cardList = [
   Visa,

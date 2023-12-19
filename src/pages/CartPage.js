@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Nav from "../Nav";
-import Footer from "../Footer";
+import Nav from "../layout/Nav";
+import Footer from "../layout/Footer";
 import { Link } from "react-router-dom";
 import styles from "./CartPage.module.css";
-import { getCartItems } from "../constants/cart";
+import { getCartItems, removeCartItems } from "../cart"; // Import removeCartItems
 import CartItem from "../components/CartItem";
 import CartDeleteModal from "../components/CartDeleteModal";
 
@@ -13,13 +13,15 @@ function CartPage(props) {
   const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
-    const totalCount = cartInfo.reduce(
+    const updatedCartInfo = getCartItems();
+    setCartInfo(updatedCartInfo);
+
+    const totalCount = updatedCartInfo.reduce(
       (total, item) => total + item.counter,
       0
     );
     setTotalItems(totalCount);
-    setCartInfo(getCartItems());
-  }, [totalItems, cartInfo]);
+  }, [totalItems]);
 
   const totalPrice = () => {
     return cartInfo.reduce((total, item) => {
@@ -33,6 +35,23 @@ function CartPage(props) {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const updateTotalItems = (newTotalItems) => {
+    setTotalItems(newTotalItems);
+  };
+
+  const onConfirm = () => {
+    const updatedCartInfo = getCartItems();
+
+    setCartInfo(updatedCartInfo);
+
+    const totalCount = updatedCartInfo.reduce(
+      (total, item) => total + item.counter,
+      0
+    );
+    setTotalItems(totalCount);
+    removeCartItems();
   };
 
   return (
@@ -58,14 +77,18 @@ function CartPage(props) {
             <div className={styles.cartContainer}>
               <div className={styles.cartContainerInner}>
                 <div>
-                  {cartInfo.map((item, index) => (
-                    <CartItem
-                      key={index}
-                      title={item.title}
-                      imageUrl={item.image}
-                      price={item.price}
-                    />
-                  ))}
+                  {cartInfo
+                    .filter((item) => item.counter > 0)
+                    .map((item, index) => (
+                      <CartItem
+                        key={index}
+                        title={item.title}
+                        imageUrl={item.image}
+                        price={item.price}
+                        cartInfo={cartInfo}
+                        setTotalItems={updateTotalItems}
+                      />
+                    ))}
                 </div>
               </div>
             </div>
@@ -81,7 +104,9 @@ function CartPage(props) {
           </div>
         </section>
       </section>
-      {isModalOpen && <CartDeleteModal closeModal={closeModal} />}
+      {isModalOpen && (
+        <CartDeleteModal closeModal={closeModal} onConfirm={onConfirm} />
+      )}
       <Footer />
     </div>
   );

@@ -1,48 +1,60 @@
 import React, { useEffect, useState } from "react";
 import styles from "./CartItem.module.css";
-import { CART_COOKIE_KEY, getCartItems } from "../constants/cart";
+import { CART_COOKIE_KEY } from "../cart";
+import { useCart } from "../CartContext";
 
-function CartItem({ title, imageUrl, price }) {
-  const [num, setNum] = useState(0);
+function CartItem({ title, imageUrl, price, cartInfo, setTotalItems }) {
+  const { dispatch } = useCart();
+  const currentItem = cartInfo.find((item) => item.title === title);
+
+  const [num, setNum] = useState(currentItem ? currentItem.counter : 0);
 
   useEffect(() => {
-    const cartInfo = getCartItems();
-    const item = cartInfo.find((item) => item.title === title);
-    if (!(item.counter < 0)) {
-      setNum(item.counter);
-    }
-  }, [title]);
+    const totalCount = cartInfo.reduce(
+      (total, item) => total + item.counter,
+      0
+    );
+    setTotalItems(totalCount);
+  }, [cartInfo, setTotalItems]);
 
   const handleIncrement = () => {
-    const cartInfo = getCartItems();
-    const updateCart = cartInfo.map((item) =>
-      item.title === title ? { ...item, counter: item.counter + 1 } : item
-    );
+    dispatch({ type: "ADD_TO_CART", payload: { product: currentItem } });
     setNum((prevNum) => prevNum + 1);
-    localStorage.setItem(CART_COOKIE_KEY, JSON.stringify(updateCart));
+
+    // 로컬 스토리지 업데이트
+    updateLocalStorage(currentItem.id, num + 1);
+
+    setTotalItems((prevTotalItems) => prevTotalItems + 1);
   };
 
   const handleDecrement = () => {
     if (num > 0) {
-      const cartInfo = getCartItems();
-      const updatedCart = cartInfo.map((item) =>
-        item.title === title ? { ...item, counter: item.counter - 1 } : item
-      );
+      dispatch({ type: "REMOVE_FROM_CART", payload: { product: currentItem } });
+      setNum((prevNum) => prevNum - 1);
 
-      if (num - 1 === 0) {
-        const updatedCartWithoutItem = cartInfo.filter(
-          (item) => item.title !== title
-        );
-        localStorage.setItem(
-          CART_COOKIE_KEY,
-          JSON.stringify(updatedCartWithoutItem)
-        );
-        setNum(0);
-      } else {
-        localStorage.setItem(CART_COOKIE_KEY, JSON.stringify(updatedCart));
-        setNum((prevNum) => prevNum - 1);
+      // 로컬 스토리지 업데이트
+      const newCounter = num - 1;
+      updateLocalStorage(currentItem.id, num - 1);
+
+      setTotalItems((prevTotalItems) => prevTotalItems - 1);
+
+      // 만약 개수가 0이라면 해당 상품을 로컬스토리지에서 삭제
+      if (newCounter === 0) {
+        removeProductFromLocalStorage(currentItem.id);
       }
     }
+  };
+
+  const removeProductFromLocalStorage = (productId) => {
+    const updatedCart = cartInfo.filter((item) => item.id !== productId);
+    localStorage.setItem(CART_COOKIE_KEY, JSON.stringify(updatedCart));
+  };
+
+  const updateLocalStorage = (productId, newCounter) => {
+    const updatedCart = cartInfo.map((item) =>
+      item.id === productId ? { ...item, counter: newCounter } : item
+    );
+    localStorage.setItem(CART_COOKIE_KEY, JSON.stringify(updatedCart));
   };
 
   return (
@@ -58,7 +70,7 @@ function CartItem({ title, imageUrl, price }) {
           <a href="/">{title}</a>
         </h2>
         <p className={styles.productPrice}>
-          ${num * Math.round(price)}
+          ${currentItem ? currentItem.counter * Math.round(price) : 0}
           <span> (${Math.round(price)})</span>
         </p>
         <div className={styles.productQuantity}>
