@@ -8,16 +8,24 @@ import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import "./App.css";
 import { CartProvider } from "./CartContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./styled";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const saveDarkMode = localStorage.getItem("isDarkMode");
+  const initialDarkMode = saveDarkMode && JSON.parse(saveDarkMode);
+
+  const [isDarkMode, setIsDarkMode] = useState(initialDarkMode);
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
   };
+
+  useEffect(() => {
+    localStorage.setItem("isDarkMode", JSON.stringify(isDarkMode));
+  }, [isDarkMode]);
+
   return (
     <ThemeProvider theme={{ isDarkMode, toggleDarkMode }}>
       <CartProvider>

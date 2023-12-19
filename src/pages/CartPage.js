@@ -108,7 +108,11 @@ function CartPage(props) {
         </section>
       </section>
       {isModalOpen && (
-        <CartDeleteModal closeModal={closeModal} onConfirm={onConfirm} />
+        <CartDeleteModal
+          isDarkMode={isDarkMode}
+          closeModal={closeModal}
+          onConfirm={onConfirm}
+        />
       )}
       <Footer />
     </div>

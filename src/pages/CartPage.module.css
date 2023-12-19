@@ -41,7 +41,8 @@
 
 .lightMode {
   h1,
-  span {
+  .totalDiv span,
+  .cartContainerInner span {
     color: #1f2937;
   }
 }

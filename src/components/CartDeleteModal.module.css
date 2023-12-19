@@ -28,4 +28,16 @@
   display: flex;
   margin-top: 1.5rem;
   justify-content: flex-end;
+  gap: 0.3rem;
+}
+
+.lightMode.modalContainer {
+  background-color: #fff;
+
+  p {
+    color: #1f2937;
+  }
+  .modalAction {
+    gap: 0.5rem;
+  }
 }
