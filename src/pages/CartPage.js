@@ -31,12 +31,21 @@ function CartPage(props) {
     }, 0);
   };
 
+  const disableBodyScroll = () => {
+    document.body.classList.add("scroll-off");
+  };
+  const enableBodyScroll = () => {
+    document.body.classList.remove("scroll-off");
+  };
+
   const openModal = () => {
     setIsModalOpen(true);
+    disableBodyScroll();
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    enableBodyScroll();
   };
 
   const updateTotalItems = (newTotalItems) => {
